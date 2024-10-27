@@ -1,8 +1,5 @@
 # Feedback-form
 
-Here’s a detailed explanation of your feedback form code and its functionality that you can paste into a README file. This will help others understand how it works, the purpose of each section, and how the form operates in both the backend and frontend.
-
-# Feedback Form Application
 This feedback form allows users to submit feedback that is sent via email and saved to a Google Sheets document. The form uses Node.js with Express for the backend server, Nodemailer to send email notifications, and Axios to save data to Google Sheets. A Google Apps Script URL is used to handle Google Sheets data transfer.
 
 # Setup Instructions
