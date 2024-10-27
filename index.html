@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add some basic styles for the loading spinner and notification */
+        .spinner {
+            display: none;
+            margin-left: 10px;
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            width: 20px;
+            height: 20px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .notification {
+            display: none;
+            margin-top: 10px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="feedback-container">
+        <h1>Feedback Form</h1>
+        <form action="http://localhost:3000/submit-feedback" method="POST" id="feedback-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="feedback">Feedback:</label>
+                <textarea id="feedback" name="feedback" rows="4" required></textarea>
+            </div>
+            <button id="subbtn" type="submit">
+                Submit
+                <div class="spinner" id="spinner"></div>
+            </button>
+            <div class="notification" id="notification">Feedback submitted successfully!</div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('feedback-form').addEventListener('submit', function(event) {
+
+            // Show the loading spinner inside the button
+            var spinner = document.getElementById('spinner');
+            spinner.style.display = 'inline-block';
+
+            // Change the submit button text to "Loading..."
+            var submitButton = event.target.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.firstChild.nodeValue = 'Loading...';
+            log.console 
+
+            // Simulate a 5-second loading period
+            setTimeout(function() {
+                // Hide the spinner
+                spinner.style.display = 'none';
+                
+                // Show the notification
+                var notification = document.getElementById('notification');
+                notification.style.display = 'block';
+                
+                // Revert the submit button text back to "Submit"
+                submitButton.disabled = false;
+                submitButton.firstChild.nodeValue = 'Submit';
+                
+                // Clear the form
+                event.target.reset();
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
